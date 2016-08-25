@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画一个雕刻线</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+    	*{margin:0;padding:0;}
+        html,body{
+            background-color: #f6f6f8;  /* 浅色 */
+        }
+        .div{
+            height: 1px;
+            background-color: #bec9d0;  /* 深色 */
+            border-bottom:1px solid #fff; /* 白色 */
+        }
+    </style>
+</head>
+<body>
+  <h1>画一条雕刻线</h1>
+  <div class="div"></div>
+</body>
+</html>
