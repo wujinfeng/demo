@@ -1,0 +1,56 @@
+
+const request = require('request');
+const fs = require('fs');
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: fs.createReadStream('./data.txt')
+});
+
+var arr = [];
+var timeout =null ;
+var i=0;
+
+rl.on('line',(line)=>{
+    arr.push(line.trim());
+});
+/*rl.on('pause',()=>{
+    console.log('pause line :'+arr.length);
+    rl.resume();
+});*/
+
+rl.on('close',()=>{
+    console.log('line :'+arr.length);
+    timer(i);
+});
+
+function timer(i) {
+    if(i<arr.length){
+        timeout = setTimeout(function () {
+            var orderNo = arr[i];
+            handler(orderNo);
+        },1000);
+    }else{
+        console.log('over');
+    }
+}
+
+function handler(orderNo) {
+    if (!orderNo) {
+        console.log('orderNo 不存在' + orderNo);
+        return false;
+    }
+    var url = 'https://dfgdf.fom?' + orderNo;
+    request(url, (error, response, body)=> {
+        if (!error && response.statusCode == 200) {
+            console.log(orderNo + ':' + body);
+        }else{
+            console.log(error);
+        }
+        i += 1;
+        timer(i);
+    });
+}
+
+
+
